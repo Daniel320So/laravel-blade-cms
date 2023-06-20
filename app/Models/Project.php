@@ -15,27 +15,18 @@ class Project extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'url',
-        'content',
-        'slug',
-        'image',
-        'type_id',
         'user_id',
+        'title',
+        'description',
+        'status',
+        'start_date',
+        'end_date',
+        'committed_hour',
     ];
-
-    public function type()
-    {
-        return $this->belongsTo(Type::class, 'type_id');
-    }
 
     public function user()
     {
         return $this->belongsTo(USer::class, 'user_id');
     }
     
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 }

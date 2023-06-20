@@ -18,11 +18,12 @@ class ProjectFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'url' => $this->faker->url,
-            'slug' => $this->faker->slug,
-            'content' => $this->faker->paragraph,
-            'user_id' => User::all()->random(),
-            'type_id' => Type::all()->random(),
+            'description' => $this->faker->paragraph,
+            'status' => 0,
+            'start_date' => $this->faker->date,
+            'end_date' => $this->faker->date,
+            'committed_hour' => $this->faker->randomNumber(2, false),
+            'user_id' => User::all()->random()
         ];
     }
 

@@ -15,13 +15,13 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('url')->nullable();
-            $table->string('slug')->unique();
-            $table->string('image')->nullable();
-            $table->text('content');
-            $table->foreignId('type_id');
             $table->foreignId('user_id');
+            $table->string('title');
+            $table->text('description');
+            $table->string('status');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->double('committed_hour');
             $table->timestamps();
         });
     }

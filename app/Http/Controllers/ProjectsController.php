@@ -18,31 +18,27 @@ class ProjectsController extends Controller
             'projects' => Project::all()
         ]);
     }
-
-    public function addForm()
-    {
-        return view('projects.add', [
-            'types' => Type::all(),
-        ]);
-    }
     
     public function add()
     {
 
         $attributes = request()->validate([
+            'user_id' => 'required',
             'title' => 'required',
-            'slug' => 'required|unique:projects|regex:/^[A-z\-]+$/',
-            'url' => 'nullable|url',
-            'content' => 'required',
-            'type_id' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'committed_hour' => 'required',
         ]);
 
         $project = new Project();
         $project->title = $attributes['title'];
-        $project->slug = $attributes['slug'];
-        $project->url = $attributes['url'];
-        $project->content = $attributes['content'];
-        $project->type_id = $attributes['type_id'];
+        $project->description = $attributes['description'];
+        $project->status = $attributes['status'];
+        $project->start_date = $attributes['start_date'];
+        $project->end_date = $attributes['end_date'];
+        $project->committed_hour = $attributes['committed_hour'];
         $project->user_id = Auth::user()->id;
         $project->save();
 
@@ -62,22 +58,21 @@ class ProjectsController extends Controller
     {
 
         $attributes = request()->validate([
+            'user_id' => 'required',
             'title' => 'required',
-            'slug' => [
-                'required',
-                Rule::unique('projects')->ignore($project->id),
-                'regex:/^[A-z\-]+$/',
-            ],
-            'url' => 'nullable|url',
-            'content' => 'required',
-            'type_id' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'committed_hour' => 'required',
         ]);
 
         $project->title = $attributes['title'];
-        $project->slug = $attributes['slug'];
-        $project->url = $attributes['url'];
-        $project->content = $attributes['content'];
-        $project->type_id = $attributes['type_id'];
+        $project->description = $attributes['description'];
+        $project->status = $attributes['status'];
+        $project->start_date = $attributes['start_date'];
+        $project->end_date = $attributes['end_date'];
+        $project->committed_hour = $attributes['committed_hour'];
         $project->save();
 
         return redirect('/console/projects/list')
@@ -103,27 +98,6 @@ class ProjectsController extends Controller
         return view('projects.image', [
             'project' => $project,
         ]);
-    }
-
-    public function image(Project $project)
-    {
-
-        $attributes = request()->validate([
-            'image' => 'required|image',
-        ]);
-
-        if($project->image)
-        {
-            Storage::delete($project->image);
-        }
-        
-        $path = request()->file('image')->store('projects');
-
-        $project->image = $path;
-        $project->save();
-        
-        return redirect('/console/projects/list')
-            ->with('message', 'Project image has been edited!');
     }
     
 }
