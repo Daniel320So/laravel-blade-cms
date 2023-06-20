@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Entry;
 use App\Models\Skill;
 use App\Models\ProjectSkill;
+use App\Models\Application;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         Entry::truncate();
         Skill::truncate();
         ProjectSkill::truncate();
+        Application::truncate();
         
         User::factory()->count(2)->create();
         Type::factory()->count(3)->create();
@@ -33,6 +35,7 @@ class DatabaseSeeder extends Seeder
         Entry::factory()->count(4)->create();
         Skill::factory()->count(4)->create();
         ProjectSkill::factory()->count(4)->create();
+        Application::factory()->count(4)->create();
             
     }
 }
