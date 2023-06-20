@@ -40,6 +40,7 @@ class UsersController extends Controller
         $user->first = $attributes['first'];
         $user->last = $attributes['last'];
         $user->email = $attributes['email'];
+        $user->role = 'member';
         $user->password = $attributes['password'];
         $user->save();
 
