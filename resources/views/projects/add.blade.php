@@ -12,7 +12,7 @@
 
         <div class="w3-margin-bottom">
             <label for="title">Title:</label>
-            <input type="title" name="title" id="title" value="{{old('title')}}" required>
+            <input type="text" name="title" id="title" value="{{old('title')}}" required>
             
             @if ($errors->first('title'))
                 <br>
@@ -21,49 +21,62 @@
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="url">URL:</label>
-            <input type="url" name="url" id="url" value="{{old('url')}}">
-
-            @if ($errors->first('url'))
+            <label for="user_id">User ID:</label>
+            <input type="text" name="user_id" id="user_id" value="{{old('user_id')}}" required>
+            
+            @if ($errors->first('user_id'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('url')}}</span>
+                <span class="w3-text-red">{{$errors->first('user_id')}}</span>
             @endif
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="slug">Slug:</label>
-            <input type="text" name="slug" id="slug" value="{{old('slug')}}" required>
-
-            @if ($errors->first('slug'))
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" value="{{old('description')}}" required>
+            
+            @if ($errors->first('description'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('slug')}}</span>
+                <span class="w3-text-red">{{$errors->first('description')}}</span>
             @endif
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="content">Content:</label>
-            <textarea name="content" id="content" required>{{old('content')}}</textarea>
-
-            @if ($errors->first('content'))
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" id="start_date" value="{{old('start_date')}}" required>
+            
+            @if ($errors->first('start_date'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('content')}}</span>
+                <span class="w3-text-red">{{$errors->first('start_date')}}</span>
             @endif
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="type_id">Type:</label>
-            <select name="type_id" id="type_id">
-                <option></option>
-                @foreach ($types as $type)
-                    <option value="{{$type->id}}"
-                        {{$type->id == old('type_id') ? 'selected' : ''}}>
-                        {{$type->title}}
-                    </option>
-                @endforeach
-            </select>
-            @if ($errors->first('type_id'))
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date" id="end_date" value="{{old('end_date')}}" required>
+            
+            @if ($errors->first('end_date'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('type_id')}}</span>
+                <span class="w3-text-red">{{$errors->first('end_date')}}</span>
+            @endif
+        </div>
+
+        <div class="w3-margin-bottom">
+            <label for="committed_hour">Committed Hours:</label>
+            <input type="number" name="committed_hour" id="committed_hour" value="{{old('committed_hour')}}" required>
+            
+            @if ($errors->first('committed_hour'))
+                <br>
+                <span class="w3-text-red">{{$errors->first('committed_hour')}}</span>
+            @endif
+        </div>
+
+        <div class="w3-margin-bottom">
+            <label for="status">Status:</label>
+            <input type="text" name="status" id="status" value="{{old('status')}}" required>
+            
+            @if ($errors->first('status'))
+                <br>
+                <span class="w3-text-red">{{$errors->first('status')}}</span>
             @endif
         </div>
 

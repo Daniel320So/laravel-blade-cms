@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Models\Project;
-use App\Models\Type;
 
 class ProjectsController extends Controller
 {
@@ -17,6 +16,11 @@ class ProjectsController extends Controller
         return view('projects.list', [
             'projects' => Project::all()
         ]);
+    }
+
+    public function addForm(Project $project)
+    {
+        return view('projects.add');
     }
     
     public function add()
@@ -50,7 +54,6 @@ class ProjectsController extends Controller
     {
         return view('projects.edit', [
             'project' => $project,
-            'types' => Type::all(),
         ]);
     }
 
