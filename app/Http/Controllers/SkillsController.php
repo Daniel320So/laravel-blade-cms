@@ -37,15 +37,14 @@ class SkillsController extends Controller
         $skill->description = $attributes['description'];
         $skill->save();
 
-        return redirect('/console/Skills/list')
+        return redirect('/console/skills/list')
             ->with('message', 'Skill has been added!');
     }
 
     public function editForm(Skill $skill)
     {
         return view('Skills.edit', [
-            'skill' => $skill,
-            'description' => $description
+            'skill' => $skill
         ]);
     }
 
@@ -58,9 +57,10 @@ class SkillsController extends Controller
         ]);
 
         $skill->title = $attributes['title'];
+        $skill->description = $attributes['description'];
         $skill->save();
 
-        return redirect('/console/Skills/list')
+        return redirect('/console/skills/list')
             ->with('message', 'Skill has been edited!');
     }
 
@@ -68,7 +68,7 @@ class SkillsController extends Controller
     {
         $skill->delete();
         
-        return redirect('/console/Skills/list')
+        return redirect('/console/skills/list')
             ->with('message', 'Skill has been deleted!');        
     }
 
