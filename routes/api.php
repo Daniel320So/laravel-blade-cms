@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Type;
 use App\Models\User;
 use App\Models\Project;
+use App\Models\Skill;
+use App\Models\ProjectSkill;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,43 +24,27 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/types', function(){
 
-    $types = Type::orderBy('title')->get();
-    return $types;
-
-});
-
+//Get all projects
 Route::get('/projects', function(){
 
     $projects = Project::orderBy('created_at')->get();
 
     foreach($projects as $key => $project)
     {
-        $projects[$key]['user'] = User::where('id', $project['user_id'])->first();
-        $projects[$key]['type'] = Type::where('id', $project['type_id'])->first();
-
-        if($project['image'])
+        $projectSkills = ProjectSkill::where('project_id', $project->id)->get();
+        $skillArray = array();
+        if (isSet($projectSkills) && !empty($projectSkills))
         {
-            $projects[$key]['image'] = env('APP_URL').'storage/'.$project['image'];
+            foreach($projectSkills as $key2 => $skillObj)
+            {
+                $skill = Skill::where('id', $skillObj->skill_id)->first();
+                array_push($skillArray, $skill);
+            }    
         }
-    }
 
-    return $projects;
-
-});
-
-Route::get('/projects/profile/{project?}', function(Project $project){
-
-    $project['user'] = User::where('id', $project['user_id'])->first();
-    $project['type'] = Type::where('id', $project['type_id'])->first();
-
-    if($project['image'])
-    {
-        $project['image'] = env('APP_URL').'storage/'.$project['image'];
+        $projects[$key]['skills'] = $skillArray;
     }
 
     return $project;
-
 });
-
