@@ -66,10 +66,13 @@ class SkillsController extends Controller
 
     public function delete(Skill $skill)
     {
-        $skill->delete();
+        if($user->role == 'admin') {
+            $skill->delete();
         
-        return redirect('/console/skills/list')
-            ->with('message', 'Skill has been deleted!');        
+            return redirect('/console/skills/list')
+                ->with('message', 'Skill has been deleted!'); 
+        }
+       
     }
 
 }

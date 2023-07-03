@@ -16,12 +16,16 @@
 
         <header class="w3-padding">
 
-            <h1 class="w3-text-red">Portfolio Console</h1>
+            <h1 class="w3-text-red">TechVols Console</h1>
 
             @if (Auth::check())
                 You are logged in as {{auth()->user()->first}} {{auth()->user()->last}} |
                 <a href="/console/logout">Log Out</a> | 
-                <a href="/console/dashboard">Dashboard</a> | 
+                @if (auth()->user()->role == 'admin')
+                    <a href="/console/dashboard">Dashboard</a> | 
+                @else
+                    <a href="/console/recruiters">Dashboard</a> | 
+                @endif
             @else
                 <a href="/">Return to My Portfolio</a>
             @endif

@@ -88,15 +88,13 @@ class ApplicationsController extends Controller
     public function delete(Application $application)
     {
 
-        if($application->image)
-        {
-            Storage::delete($application->image);
+        if($user->role == 'admin') {
+            $application->delete();
+        
+            return redirect('/console/applications/list')
+                ->with('message', 'Application has been deleted!');    
         }
         
-        $application->delete();
-        
-        return redirect('/console/applications/list')
-            ->with('message', 'Application has been deleted!');        
     }
 
     public function imageForm(Application $application)

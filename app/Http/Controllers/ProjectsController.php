@@ -87,16 +87,13 @@ class ProjectsController extends Controller
 
     public function delete(Project $project)
     {
+        if($user->role == 'admin' || $project->user_id == auth()->user()->id) {
 
-        if($project->image)
-        {
-            Storage::delete($project->image);
-        }
-        
         $project->delete();
         
         return redirect('/console/projects/list')
-            ->with('message', 'Project has been deleted!');        
+            ->with('message', 'Project has been deleted!');  
+        }      
     }
     
 }
