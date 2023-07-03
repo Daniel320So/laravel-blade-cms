@@ -20,7 +20,9 @@ class ApplicationFactory extends Factory
             'project_id' => Project::all()->random(),
             'name' => $this->faker->sentence,
             'email' => $this->faker->unique()->safeEmail(),
-            'phone' => $this->faker->randomNumber(8, true)
+            'phone' => $this->faker->randomNumber(8, true),
+            'linkedin' => $this->faker->url('http'),
+            'website' => $this->faker->url('http'),
         ];
     }
 

@@ -12,9 +12,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Linkedin</th>
             <th>Website</th>
-            <th>Resume</th>
-            <th>Cover Letter</th>
             <th></th>
             <th></th>
         </tr>
@@ -24,9 +23,8 @@
                 <td>{{$application->name}}</td>
                 <td>{{$application->email}}</td>
                 <td>{{$application->phone}}</td>
+                <td>{{$application->linkedin}}</td>
                 <td>{{$application->website}}</td>
-                <td>{{$application->resume}}</td>
-                <td>{{$application->cover_letter}}</td>
                 <td><a href="/console/applications/edit/{{$application->id}}">Edit</a></td>
                 <td><a href="/console/applications/delete/{{$application->id}}">Delete</a></td>
             </tr>

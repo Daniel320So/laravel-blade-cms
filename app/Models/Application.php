@@ -20,14 +20,13 @@ class Application extends Model
         'name',
         'email',
         'phone',
-        'website',
-        'resume',
-        'cover_letter',
+        'linkedin',
+        'website'
     ];
 
-    public function user()
+    public function project()
     {
-        return $this->belongsTo(USer::class, 'user_id');
+        return $this->belongsTo(Project::class, 'project_id');
     }
     
 }

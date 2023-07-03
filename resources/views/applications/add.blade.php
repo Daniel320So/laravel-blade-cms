@@ -4,9 +4,9 @@
 
 <section class="w3-padding">
 
-    <h2>Add Project</h2>
+    <h2>Add Application</h2>
 
-    <form method="post" action="/console/projects/add" novalidate class="w3-margin-bottom">
+    <form method="post" action="/console/applications/add" novalidate class="w3-margin-bottom">
 
         @csrf
 
@@ -51,8 +51,18 @@
         </div>
 
         <div class="w3-margin-bottom">
+            <label for="linkedin">Linkedin:</label>
+            <input type="text" name="linkedin" id="linkedin" value="{{old('linkedin')}}" required>
+            
+            @if ($errors->first('linkedin'))
+                <br>
+                <span class="w3-text-red">{{$errors->first('linkedin')}}</span>
+            @endif
+        </div>
+
+        <div class="w3-margin-bottom">
             <label for="website">Website:</label>
-            <input type="date" name="website" id="website" value="{{old('website')}}" required>
+            <input type="text" name="website" id="website" value="{{old('website')}}" required>
             
             @if ($errors->first('website'))
                 <br>
@@ -60,7 +70,7 @@
             @endif
         </div>
 
-        <button type="submit" class="w3-button w3-green">Add Project</button>
+        <button type="submit" class="w3-button w3-green">Add Application</button>
 
     </form>
 

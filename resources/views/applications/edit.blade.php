@@ -4,87 +4,77 @@
 
 <section class="w3-padding">
 
-    <h2>Edit Project</h2>
+    <h2>Edit Application</h2>
 
-    <form method="post" action="/console/projects/edit/{{$project->id}}" novalidate class="w3-margin-bottom">
+    <form method="post" action="/console/applications/edit/{{$application->id}}" novalidate class="w3-margin-bottom">
 
         @csrf
 
         <div class="w3-margin-bottom">
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title" value="{{old('title', $project->title)}}" required>
+            <label for="project_id">Project ID:</label>
+            <input type="text" name="project_id" id="project_id" value="{{old('project_id', $application->project_id)}}" required>
             
-            @if ($errors->first('title'))
+            @if ($errors->first('project_id'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('title')}}</span>
+                <span class="w3-text-red">{{$errors->first('project_id')}}</span>
             @endif
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="user_id">User ID:</label>
-            <input type="text" name="user_id" id="user_id" value="{{old('user_id', $project->user_id)}}" required>
+            <label for="name">Name::</label>
+            <input type="text" name="name" id="name" value="{{old('name', $application->name)}}" required>
             
-            @if ($errors->first('user_id'))
+            @if ($errors->first('name'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('user_id')}}</span>
+                <span class="w3-text-red">{{$errors->first('name')}}</span>
             @endif
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="description">Description:</label>
-            <input type="text" name="description" id="description" value="{{old('description', $project->description)}}" required>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" value="{{old('email', $application->email)}}" required>
             
-            @if ($errors->first('description'))
+            @if ($errors->first('email'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('description')}}</span>
+                <span class="w3-text-red">{{$errors->first('email')}}</span>
             @endif
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="start_date">Start Date:</label>
-            <input type="date" name="start_date" id="start_date" value="{{old('start_date', $project->start_date)}}" required>
+            <label for="phone">Phone Number:</label>
+            <input type="text" name="phone" id="phone" value="{{old('phone', $application->phone)}}" required>
             
-            @if ($errors->first('start_date'))
+            @if ($errors->first('phone'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('start_date')}}</span>
+                <span class="w3-text-red">{{$errors->first('phone')}}</span>
             @endif
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="end_date">End Date:</label>
-            <input type="date" name="end_date" id="end_date" value="{{old('end_date', $project->end_date)}}" required>
+            <label for="linkedin">Linkedin:</label>
+            <input type="text" name="linkedin" id="linkedin" value="{{old('linkedin', $application->linkedin)}}" required>
             
-            @if ($errors->first('end_date'))
+            @if ($errors->first('linkedin'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('end_date')}}</span>
+                <span class="w3-text-red">{{$errors->first('linkedin')}}</span>
             @endif
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="committed_hour">Committed Hour</label>
-            <input type="number" name="committed_hour" id="committed_hour" value="{{$project->committed_hour}}" required>
+            <label for="website">Website:</label>
+            <input type="text" name="website" id="website" value="{{old('website', $application->website)}}" required>
             
-            @if ($errors->first('committed_hour'))
+            @if ($errors->first('website'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('committed_hour')}}</span>
+                <span class="w3-text-red">{{$errors->first('website')}}</span>
             @endif
         </div>
 
-        <div class="w3-margin-bottom">
-            <label for="status">Status:</label>
-            <input type="text" name="status" id="status" value="{{old('status', $project->status)}}" required>
-            
-            @if ($errors->first('status'))
-                <br>
-                <span class="w3-text-red">{{$errors->first('status')}}</span>
-            @endif
-        </div>
-
-        <button type="submit" class="w3-button w3-green">Edit Project</button>
+        <button type="submit" class="w3-button w3-green">Edit Application</button>
 
     </form>
 
-    <a href="/console/projects/list">Back to Project List</a>
+    <a href="/console/applications/list">Back to Application List</a>
 
 </section>
 

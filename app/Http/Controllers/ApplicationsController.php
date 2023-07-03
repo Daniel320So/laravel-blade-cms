@@ -32,8 +32,7 @@ class ApplicationsController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'website' => 'nullable',
-            'resume' => 'nullable',
-            'cover_letter' => 'nullable',
+            'linkedin' => 'linkedin',
         ]);
 
         
@@ -44,8 +43,7 @@ class ApplicationsController extends Controller
         $application->email = $attributes['email'];
         $application->phone = $attributes['phone'];
         $application->website = $attributes['website'];
-        $application->resume = $attributes['resume'];
-        $application->cover_letter = $attributes['cover_letter'];
+        $application->resume = $attributes['linkedin'];
         $application->save();
 
         return redirect('/console/applications/list')
@@ -67,9 +65,8 @@ class ApplicationsController extends Controller
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
+            'linkedin' => 'nullable',
             'website' => 'nullable',
-            'resume' => 'nullable',
-            'cover_letter' => 'nullable',
         ]);
 
         $application->project_id = $attributes['project_id'];
@@ -77,8 +74,7 @@ class ApplicationsController extends Controller
         $application->email = $attributes['email'];
         $application->phone = $attributes['phone'];
         $application->website = $attributes['website'];
-        $application->resume = $attributes['resume'];
-        $application->cover_letter = $attributes['cover_letter'];
+        $application->linkedin = $attributes['linkedin'];
         $application->save();
 
         return redirect('/console/applications/list')

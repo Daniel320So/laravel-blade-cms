@@ -17,9 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
+            $table->text('linkedin')->nullable();
             $table->text('website')->nullable();
-            $table->binary('resume')->nullable();
-            $table->binary('cover_letter')->nullable();
             $table->timestamps();
         });
     }
