@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Models\Project;
+use App\Models\Skill;
 
 class ProjectsController extends Controller
 {
@@ -18,33 +19,35 @@ class ProjectsController extends Controller
         ]);
     }
 
-    public function addForm(Project $project)
+    public function addForm()
     {
-        return view('projects.add');
+        return view('projects.add', [
+            'skills' => Skill::all()
+        ]);
     }
     
     public function add()
     {
 
         $attributes = request()->validate([
-            'user_id' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'status' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
             'committed_hour' => 'required',
+            'skills' => 'required'
         ]);
 
         $project = new Project();
-        $project->title = $attributes['title'];
+        $project->title = $attributes['skills'];
         $project->description = $attributes['description'];
-        $project->status = $attributes['status'];
+        $project->status = "Opened";
         $project->start_date = $attributes['start_date'];
         $project->end_date = $attributes['end_date'];
         $project->committed_hour = $attributes['committed_hour'];
         $project->user_id = Auth::user()->id;
         $project->save();
+        $project->Skills()->attach($attributes['skills']);
 
         return redirect('/console/projects/list')
             ->with('message', 'Project has been added!');
@@ -54,6 +57,7 @@ class ProjectsController extends Controller
     {
         return view('projects.edit', [
             'project' => $project,
+            'allSkills' => Skill::all()
         ]);
     }
 
@@ -61,7 +65,6 @@ class ProjectsController extends Controller
     {
 
         $attributes = request()->validate([
-            'user_id' => 'required',
             'title' => 'required',
             'description' => 'required',
             'status' => 'required',
@@ -94,13 +97,6 @@ class ProjectsController extends Controller
         
         return redirect('/console/projects/list')
             ->with('message', 'Project has been deleted!');        
-    }
-
-    public function imageForm(Project $project)
-    {
-        return view('projects.image', [
-            'project' => $project,
-        ]);
     }
     
 }

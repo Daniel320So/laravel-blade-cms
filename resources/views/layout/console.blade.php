@@ -22,7 +22,6 @@
                 You are logged in as {{auth()->user()->first}} {{auth()->user()->last}} |
                 <a href="/console/logout">Log Out</a> | 
                 <a href="/console/dashboard">Dashboard</a> | 
-                <a href="/">Website Home Page</a>
             @else
                 <a href="/">Return to My Portfolio</a>
             @endif

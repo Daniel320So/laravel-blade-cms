@@ -14,6 +14,7 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th>Committed hour</th>
+            <th>Skills</th>
             <th>Status</th>
             <th></th>
             <th></th>
@@ -26,6 +27,11 @@
                 <td>{{$project->start_date}}</td>
                 <td>{{$project->end_date}}</td>
                 <td>{{$project->committed_hour}}</td>
+                <td>
+                @foreach ($project->Skills as $skill)
+                    {{$skill->title}} <br>
+                @endforeach
+                </td>
                 <td>{{$project->status}}</td>
                 <td><a href="/console/projects/edit/{{$project->id}}">Edit</a></td>
                 <td><a href="/console/projects/delete/{{$project->id}}">Delete</a></td>

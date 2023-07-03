@@ -19,4 +19,9 @@ class Skill extends Model
         'description'
     ];
 
+    public function projects()
+    {
+        return $this->belongsToMany(Projcet::class, 'projects_skills');
+    }
+
 }

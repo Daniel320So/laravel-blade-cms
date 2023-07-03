@@ -16,8 +16,8 @@ class ProjectSkill extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
-        'project_id'
+        'project_id',
+        'skill_id'
     ];
 
 }

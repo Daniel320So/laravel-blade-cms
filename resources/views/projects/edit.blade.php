@@ -21,19 +21,8 @@
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="user_id">User ID:</label>
-            <input type="text" name="user_id" id="user_id" value="{{old('user_id', $project->user_id)}}" required>
-            
-            @if ($errors->first('user_id'))
-                <br>
-                <span class="w3-text-red">{{$errors->first('user_id')}}</span>
-            @endif
-        </div>
-
-        <div class="w3-margin-bottom">
             <label for="description">Description:</label>
-            <input type="text" name="description" id="description" value="{{old('description', $project->description)}}" required>
-            
+            <textarea name="description" id="description" required>{{old('description', $project->description)}}</textarea>
             @if ($errors->first('description'))
                 <br>
                 <span class="w3-text-red">{{$errors->first('description')}}</span>
@@ -71,9 +60,29 @@
         </div>
 
         <div class="w3-margin-bottom">
+            <label for="skills">Skills:</label><br>
+            @foreach ($allSkills as $skill)
+                @if ($project->Skills->contains($skill))
+                    <input type="checkbox" name="skills" value="{{$skill->id}}" checked> {{$skill->title}}<br>
+                @else
+                    <input type="checkbox" name="skills" value="{{$skill->id}}"> {{$skill->title}}<br>
+                @endif
+                  
+            @endforeach
+            @if ($errors->first('skills'))
+                <br>
+                <span class="w3-text-red">{{$errors->first('skills')}}</span>
+            @endif
+        </div>
+
+        <div class="w3-margin-bottom">
             <label for="status">Status:</label>
-            <input type="text" name="status" id="status" value="{{old('status', $project->status)}}" required>
-            
+            <select name="status" id="status">
+                <option value="Opened">Opened</option>
+                <option value="Closed">Closed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+
             @if ($errors->first('status'))
                 <br>
                 <span class="w3-text-red">{{$errors->first('status')}}</span>

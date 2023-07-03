@@ -21,18 +21,8 @@
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="user_id">User ID:</label>
-            <input type="text" name="user_id" id="user_id" value="{{old('user_id')}}" required>
-            
-            @if ($errors->first('user_id'))
-                <br>
-                <span class="w3-text-red">{{$errors->first('user_id')}}</span>
-            @endif
-        </div>
-
-        <div class="w3-margin-bottom">
             <label for="description">Description:</label>
-            <input type="text" name="description" id="description" value="{{old('description')}}" required>
+            <textarea name="description" id="description" value="{{old('description')}}" required></textarea>
             
             @if ($errors->first('description'))
                 <br>
@@ -71,12 +61,13 @@
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="status">Status:</label>
-            <input type="text" name="status" id="status" value="{{old('status')}}" required>
-            
-            @if ($errors->first('status'))
+            <label for="skills">Skills:</label><br>
+            @foreach ($skills as $skill)
+                <input type="checkbox" name="skills" value="{{$skill->id}}"> {{$skill->title}}<br>  
+            @endforeach
+            @if ($errors->first('skills'))
                 <br>
-                <span class="w3-text-red">{{$errors->first('status')}}</span>
+                <span class="w3-text-red">{{$errors->first('skills')}}</span>
             @endif
         </div>
 
