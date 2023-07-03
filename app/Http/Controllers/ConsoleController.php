@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use App\Models\Project;
 
 class ConsoleController extends Controller
 {
@@ -28,7 +29,15 @@ class ConsoleController extends Controller
 
         if(auth()->attempt($attributes))
         {
-            return redirect('/console/dashboard');
+            if(auth()->user()->role == "admin")
+            {
+                return redirect('/console/dashboard');
+            }
+            else
+            {
+                return redirect('/console/recruiters');
+            }
+            
         }
         
         return back()
@@ -40,5 +49,13 @@ class ConsoleController extends Controller
     {
         return view('console.dashboard');
     }
+
+    public function recruiters()
+    {
+        return view('console.recruiters', [
+            'projects' => Project::all()
+        ]);
+    }
+
 
 }
