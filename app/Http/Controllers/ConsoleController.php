@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Project;
+use App\Models\Application;
 
 class ConsoleController extends Controller
 {
@@ -54,6 +55,15 @@ class ConsoleController extends Controller
     {
         return view('console.recruiters', [
             'projects' => Project::all()
+        ]);
+    }
+
+    
+    public function applicationList(Project $project)
+    {
+        return view('console.applicationList', [
+            'project' => $project,
+            'applications' => Application::all()
         ]);
     }
 

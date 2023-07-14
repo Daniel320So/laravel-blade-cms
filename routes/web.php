@@ -30,6 +30,7 @@ Route::get('/console/login', [ConsoleController::class, 'loginForm'])->middlewar
 Route::post('/console/login', [ConsoleController::class, 'login'])->middleware('guest');
 Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware('auth');
 Route::get('/console/recruiters', [ConsoleController::class, 'recruiters'])->middleware('auth');
+Route::get('/console/applicationList/{project:id}', [ConsoleController::class, 'applicationList'])->where('project', '[0-9]+')->middleware('auth');
 
 Route::get('/console/projects/list', [ProjectsController::class, 'list'])->middleware('auth');
 Route::get('/console/projects/add', [ProjectsController::class, 'addForm'])->middleware('auth');

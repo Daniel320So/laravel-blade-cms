@@ -93,7 +93,12 @@
 
     </form>
 
-    <a href="/console/projects/list">Back to Project List</a>
+    @if (auth()->user()->role = "member") 
+        <a href="/console/recruiters">Back to Project List</a>
+    @else
+        <a href="/console/projects/list">Back to Project List</a>
+    @endif
+
 
 </section>
 
