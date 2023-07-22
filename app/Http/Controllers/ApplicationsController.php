@@ -10,6 +10,20 @@ use App\Models\Application;
 
 class ApplicationsController extends Controller
 {
+    public function insertApplication(Request $request)
+    {      
+
+        $application = new Application();
+        $application->project_id = $request->input('project_id');
+        $application->name = $request->input('name');
+        $application->email = $request->input('email');
+        $application->phone = $request->input('phone');
+        $application->linkedin = $request->input('linkedin');
+        $application->website = $request->input('website');
+        $application->save();
+
+        return response()->json($application);
+    }
 
     public function list()
     {
@@ -43,7 +57,7 @@ class ApplicationsController extends Controller
         $application->email = $attributes['email'];
         $application->phone = $attributes['phone'];
         $application->website = $attributes['website'];
-        $application->resume = $attributes['linkedin'];
+        $application->linkedin = $attributes['linkedin'];
         $application->save();
 
         return redirect('/console/applications/list')

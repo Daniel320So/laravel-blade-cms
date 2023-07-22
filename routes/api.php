@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\ProjectSkill;
+use App\Models\Application;
+
+use App\Controllers\ApplicationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +50,6 @@ Route::get('/projects', function(){
 
     return $projects;
 });
+
+//Add new application
+Route::post('/applications/add','App\Http\Controllers\ApplicationsController@insertApplication');
