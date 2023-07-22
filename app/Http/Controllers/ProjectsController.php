@@ -91,7 +91,7 @@ class ProjectsController extends Controller
 
     public function delete(Project $project)
     {
-        if($user->role == 'admin' || $project->user_id == auth()->user()->id) {
+        if(auth()->user()->role == 'admin' || $project->user_id == auth()->user()->id) {
 
         $project->delete();
         

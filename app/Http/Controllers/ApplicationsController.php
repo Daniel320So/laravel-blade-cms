@@ -98,7 +98,7 @@ class ApplicationsController extends Controller
     public function delete(Application $application)
     {
 
-        if($user->role == 'admin') {
+        if(auth()->user()->role == 'admin') {
             $application->delete();
         
             return redirect('/console/applications/list')
