@@ -70,12 +70,12 @@
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="skills">Skills:</label><br>
+            <label for="skills[]">Skills:</label><br>
             @foreach ($allSkills as $skill)
                 @if ($project->Skills->contains($skill))
-                    <input type="checkbox" name="skills" value="{{$skill->id}}" checked> {{$skill->title}}<br>
+                    <input type="checkbox" name="skills[]" value="{{$skill->id}}" checked> {{$skill->title}}<br>
                 @else
-                    <input type="checkbox" name="skills" value="{{$skill->id}}"> {{$skill->title}}<br>
+                    <input type="checkbox" name="skills[]" value="{{$skill->id}}"> {{$skill->title}}<br>
                 @endif
                   
             @endforeach

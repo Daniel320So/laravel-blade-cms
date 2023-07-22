@@ -49,10 +49,20 @@ class ProjectsController extends Controller
         $project->committed_hour = $attributes['committed_hour'];
         $project->user_id = Auth::user()->id;
         $project->save();
-        $project->Skills()->attach($attributes['skills']);
+        foreach ($attributes['skills'] as $skill) {
+            $project->Skills()->attach($$skill);
+        }
+        
 
-        return redirect('/console/projects/list')
+        if(auth()->user()->role == 'admin') {
+            return redirect('/console/projects/list')
             ->with('message', 'Project has been added!');
+        } else {
+            return redirect('/console/recruiters')
+            ->with('message', 'Project has been added!');
+        }
+
+
     }
 
     public function editForm(Project $project)
@@ -74,6 +84,7 @@ class ProjectsController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'committed_hour' => 'required',
+            'skills' => 'required'
         ]);
 
         $project->title = $attributes['title'];
@@ -85,8 +96,18 @@ class ProjectsController extends Controller
         $project->committed_hour = $attributes['committed_hour'];
         $project->save();
 
-        return redirect('/console/projects/list')
+        foreach ($attributes['skills'] as $skill) {
+            $project->Skills()->syncWithoutDetaching($skill);
+        }
+
+        if(auth()->user()->role == 'admin') {
+            return redirect('/console/projects/list')
             ->with('message', 'Project has been edited!');
+        } else {
+            return redirect('/console/recruiters')
+            ->with('message', 'Project has been edited!');
+        }
+
     }
 
     public function delete(Project $project)

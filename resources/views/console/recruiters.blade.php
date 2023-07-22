@@ -16,7 +16,6 @@
             <th>Number of Applicants</th>
             <th></th>
             <th></th>
-            <th></th>
         </tr>
         @foreach ($projects as $project)
             @if($project->user_id == auth()->user()->id)
@@ -33,7 +32,6 @@
                 <td>{{Count($project->applications)}}</td>
                 <td><a href="/console/applicationList/{{$project->id}}">View Applicants</a></td>
                 <td><a href="/console/projects/edit/{{$project->id}}">Edit</a></td>
-                <td><a href="/console/projects/delete/{{$project->id}}">Delete</a></td>
                 </tr>
             @endif
         @endforeach

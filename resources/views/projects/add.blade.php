@@ -71,9 +71,9 @@
         </div>
 
         <div class="w3-margin-bottom">
-            <label for="skills">Skills:</label><br>
+            <label for="skills[]">Skills:</label><br>
             @foreach ($skills as $skill)
-                <input type="checkbox" name="skills" value="{{$skill->id}}"> {{$skill->title}}<br>  
+                <input type="checkbox" name="skills[]" value="{{$skill->id}}"> {{$skill->title}}<br>  
             @endforeach
             @if ($errors->first('skills'))
                 <br>
