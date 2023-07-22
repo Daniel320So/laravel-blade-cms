@@ -50,7 +50,7 @@ class ProjectsController extends Controller
         $project->user_id = Auth::user()->id;
         $project->save();
         foreach ($attributes['skills'] as $skill) {
-            $project->Skills()->attach($$skill);
+            $project->Skills()->attach($skill);
         }
         
 
