@@ -8,7 +8,6 @@
     
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-red">
-            <th>Project ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
@@ -17,7 +16,6 @@
         </tr>
         @foreach ($applications as $application)
             <tr>
-                <td>{{$application->project_id}}</td>
                 <td>{{$application->name}}</td>
                 <td>{{$application->email}}</td>
                 <td>{{$application->phone}}</td>

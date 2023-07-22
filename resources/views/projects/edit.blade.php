@@ -22,7 +22,7 @@
 
         <div class="w3-margin-bottom">
             <label for="company_name">Company Name:</label>
-            <input type="text" name="company_name" id="company_name" value="{{old('company_name', $project->company_name))}}" required>
+            <input type="text" name="company_name" id="company_name" value="{{old('company_name', $project->company_name)}}" required>
             
             @if ($errors->first('company_name'))
                 <br>

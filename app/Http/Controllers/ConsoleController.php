@@ -13,7 +13,7 @@ class ConsoleController extends Controller
     public function logout()
     {
         auth()->logout();
-        return redirect('/');
+        return redirect('/console/login');
     }
 
     public function loginForm()
@@ -63,7 +63,7 @@ class ConsoleController extends Controller
     {
         return view('console.applicationList', [
             'project' => $project,
-            'applications' => Application::all()
+            'applications' => Application::where('project_id', $project->id)->get()
         ]);
     }
 

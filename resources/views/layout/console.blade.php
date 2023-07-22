@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>My Portfolio</title>
+        <title>TechVols</title>
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="{{url('app.css')}}">
@@ -27,7 +27,7 @@
                     <a href="/console/recruiters">Dashboard</a> | 
                 @endif
             @else
-                <a href="/">Return to My Portfolio</a>
+                <a href="/">Return to My TechVols</a>
             @endif
 
         </header>
