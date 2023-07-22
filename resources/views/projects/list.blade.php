@@ -9,6 +9,7 @@
     <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
         <tr class="w3-red">
             <th>Title</th>
+            <th>Company Name</th>
             <th>User ID</th>
             <th>Description</th>
             <th>Start Date</th>
@@ -22,6 +23,7 @@
         @foreach ($projects as $project)
             <tr>
                 <td>{{$project->title}}</td>
+                <td>{{$project->company_name}}</td>
                 <td>{{$project->user_id}}</td>
                 <td>{{$project->description}}</td>
                 <td>{{$project->start_date}}</td>

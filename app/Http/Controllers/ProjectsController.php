@@ -31,6 +31,7 @@ class ProjectsController extends Controller
 
         $attributes = request()->validate([
             'title' => 'required',
+            'company_name' => 'required',
             'description' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
@@ -39,7 +40,8 @@ class ProjectsController extends Controller
         ]);
 
         $project = new Project();
-        $project->title = $attributes['skills'];
+        $project->title = $attributes['title'];
+        $project->company_name = $attributes['company_name'];
         $project->description = $attributes['description'];
         $project->status = "Opened";
         $project->start_date = $attributes['start_date'];
@@ -66,6 +68,7 @@ class ProjectsController extends Controller
 
         $attributes = request()->validate([
             'title' => 'required',
+            'company_name' => 'required',
             'description' => 'required',
             'status' => 'required',
             'start_date' => 'required',
@@ -74,6 +77,7 @@ class ProjectsController extends Controller
         ]);
 
         $project->title = $attributes['title'];
+        $project->company_name = $attributes['company_name'];
         $project->description = $attributes['description'];
         $project->status = $attributes['status'];
         $project->start_date = $attributes['start_date'];

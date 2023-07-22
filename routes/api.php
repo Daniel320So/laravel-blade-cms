@@ -29,7 +29,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/projects', function(){
 
     $projects = Project::orderBy('created_at')->get();
-
     foreach($projects as $key => $project)
     {
         $projectSkills = ProjectSkill::where('project_id', $project->id)->get();
@@ -46,5 +45,5 @@ Route::get('/projects', function(){
         $projects[$key]['skills'] = $skillArray;
     }
 
-    return $project;
+    return $projects;
 });
