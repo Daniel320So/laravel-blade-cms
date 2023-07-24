@@ -19,11 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome', [
-        'projects' => Project::all(),
-    ]);
-});
+Route::get('/', [ConsoleController::class, 'home']);
 
 Route::get('/console/logout', [ConsoleController::class, 'logout'])->middleware('auth');
 Route::get('/console/login', [ConsoleController::class, 'loginForm'])->middleware('guest');

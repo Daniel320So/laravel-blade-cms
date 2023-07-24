@@ -9,6 +9,15 @@ use App\Models\Application;
 
 class ConsoleController extends Controller
 {
+
+    public function home()
+    {
+        try {
+            auth()->logout();
+        } catch (Throwable $e) {
+        }
+        return redirect('/console/login');
+    }
     
     public function logout()
     {

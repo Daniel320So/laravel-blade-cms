@@ -27,7 +27,6 @@
                     <a href="/console/recruiters">Dashboard</a> | 
                 @endif
             @else
-                <a href="/">Return to My TechVols</a>
             @endif
 
         </header>
